@@ -16,5 +16,8 @@ commands
 
 - php artisan make:migration change_rows_in_projects 
 
-- 
+- php artisan db:seed
+
+- php artisan db:seed --class=ProjectSeeder
+
 
