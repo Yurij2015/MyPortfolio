@@ -8,3 +8,4 @@ commands
 
 - php artisan make:resource ProjectResource 
 
+- php artisan make:resource ProjectCollection 
