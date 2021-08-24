@@ -43,19 +43,21 @@ class ProjectController extends Controller
     public function show(Project $project)
     {
         return new ProjectResource($project);
-        //
-    }
+      }
 
     /**
      * Update the specified resource in storage.
      *
      * @param \Illuminate\Http\Request $request
      * @param \App\Models\Project $project
-     * @return Response
+     * @return ProjectResource
      */
     public function update(Request $request, Project $project)
     {
-        //
+        $project->update($request->only([
+            'title', 'description', 'image_preview'
+        ]));
+        return new ProjectResource($project);
     }
 
     /**
@@ -66,6 +68,6 @@ class ProjectController extends Controller
      */
     public function destroy(Project $project)
     {
-        //
+        $project->delete();
     }
 }
