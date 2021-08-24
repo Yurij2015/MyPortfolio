@@ -2,6 +2,8 @@
 
 namespace App\Http\Controllers;
 
+use App\Http\Resources\ProjectImageCollection;
+use App\Http\Resources\ProjectImageResource;
 use App\Models\ProjectImage;
 use Illuminate\Http\Request;
 use Illuminate\Http\Response;
@@ -11,11 +13,11 @@ class ProjectImageController extends Controller
     /**
      * Display a listing of the resource.
      *
-     * @return Response
+     * @return ProjectImageCollection
      */
     public function index()
     {
-        //
+        return new ProjectImageCollection(ProjectImage::all());
     }
 
     /**
@@ -32,19 +34,19 @@ class ProjectImageController extends Controller
     /**
      * Display the specified resource.
      *
-     * @param  \App\Models\ProjectImage  $projectImage
-     * @return Response
+     * @param ProjectImage $projectImage
+     * @return ProjectImageResource
      */
     public function show(ProjectImage $projectImage)
     {
-        //
+        return new ProjectImageResource($projectImage);
     }
 
     /**
      * Update the specified resource in storage.
      *
      * @param Request $request
-     * @param  \App\Models\ProjectImage  $projectImage
+     * @param ProjectImage $projectImage
      * @return Response
      */
     public function update(Request $request, ProjectImage $projectImage)
@@ -55,7 +57,7 @@ class ProjectImageController extends Controller
     /**
      * Remove the specified resource from storage.
      *
-     * @param  \App\Models\ProjectImage  $projectImage
+     * @param ProjectImage $projectImage
      * @return Response
      */
     public function destroy(ProjectImage $projectImage)

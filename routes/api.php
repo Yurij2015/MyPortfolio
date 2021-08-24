@@ -22,5 +22,5 @@ Route::middleware('auth:sanctum')->get('/user', function (Request $request) {
 
 Route::apiResource('/projects', ProjectController::class);
 
-Route::apiResource('/project-image', ProjectImageController::class);
+Route::apiResource('/project-images', ProjectImageController::class);
 
