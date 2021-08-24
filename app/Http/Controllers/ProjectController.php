@@ -13,11 +13,13 @@ class ProjectController extends Controller
     /**
      * Display a listing of the resource.
      *
-     * @return \Illuminate\Http\Resources\Json\AnonymousResourceCollection
+     * @return \Illuminate\Http\JsonResponse
      */
     public function index()
     {
-        return ProjectResource::collection(Project::all());
+//        return ProjectResource::collection(Project::all());
+        return response()->json(new ProjectCollection(Project::all()), Response::HTTP_OK);
+
     }
 
     /**
@@ -43,7 +45,7 @@ class ProjectController extends Controller
     public function show(Project $project)
     {
         return new ProjectResource($project);
-      }
+    }
 
     /**
      * Update the specified resource in storage.
@@ -64,10 +66,11 @@ class ProjectController extends Controller
      * Remove the specified resource from storage.
      *
      * @param \App\Models\Project $project
-     * @return Response
+     * @return \Illuminate\Http\JsonResponse
      */
     public function destroy(Project $project)
     {
         $project->delete();
+        return response()->json(null, Response::HTTP_NO_CONTENT);
     }
 }
