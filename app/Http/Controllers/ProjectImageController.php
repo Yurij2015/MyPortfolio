@@ -5,6 +5,7 @@ namespace App\Http\Controllers;
 use App\Http\Resources\ProjectImageCollection;
 use App\Http\Resources\ProjectImageResource;
 use App\Models\ProjectImage;
+use Illuminate\Http\JsonResponse;
 use Illuminate\Http\Request;
 use Illuminate\Http\Response;
 
@@ -24,11 +25,14 @@ class ProjectImageController extends Controller
      * Store a newly created resource in storage.
      *
      * @param Request $request
-     * @return Response
+     * @return ProjectImageResource
      */
     public function store(Request $request)
     {
-        //
+        $projectImage = ProjectImage::create($request->only([
+            'title', 'description', 'image_preview'
+        ]));
+        return new ProjectImageResource($projectImage);
     }
 
     /**
@@ -47,21 +51,25 @@ class ProjectImageController extends Controller
      *
      * @param Request $request
      * @param ProjectImage $projectImage
-     * @return Response
+     * @return ProjectImageResource
      */
     public function update(Request $request, ProjectImage $projectImage)
     {
-        //
+        $projectImage = ProjectImage::update($request->only([
+            'title', 'description', 'image_preview'
+        ]));
+        return new ProjectImageResource($projectImage);
     }
 
     /**
      * Remove the specified resource from storage.
      *
      * @param ProjectImage $projectImage
-     * @return Response
+     * @return JsonResponse
      */
     public function destroy(ProjectImage $projectImage)
     {
-        //
+        $projectImage->delete();
+        return response()->json(null, Response::HTTP_NO_CONTENT);
     }
 }
