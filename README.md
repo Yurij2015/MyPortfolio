@@ -9,3 +9,12 @@ commands
 - php artisan make:resource ProjectResource 
 
 - php artisan make:resource ProjectCollection 
+
+- php artisan migrate
+
+- composer require doctrine/dbal
+
+- php artisan make:migration change_rows_in_projects 
+
+- 
+
