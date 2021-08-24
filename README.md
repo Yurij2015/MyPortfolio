@@ -28,6 +28,11 @@ commands
 
 - php artisan make:controller ProjectImageController --api --model=ProjectImage
 
+- php artisan make:resource ProjectImageResource 
+
+
+- php artisan make:resource ProjectImageCollection
+
 
 
 
