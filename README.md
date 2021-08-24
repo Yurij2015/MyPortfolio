@@ -22,4 +22,13 @@ commands
 
 - php artisan route:list
 
+--
+
+- php artisan make:model ProjectImage -mfs
+
+- php artisan make:controller ProjectImageController --api --model=ProjectImage
+
+
+
+
 
