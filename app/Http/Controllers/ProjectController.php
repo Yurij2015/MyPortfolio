@@ -6,6 +6,7 @@ use App\Http\Resources\ProjectCollection;
 use App\Http\Resources\ProjectResource;
 use App\Models\Project;
 use Illuminate\Http\Request;
+use Illuminate\Http\Response;
 
 class ProjectController extends Controller
 {
@@ -22,31 +23,35 @@ class ProjectController extends Controller
     /**
      * Store a newly created resource in storage.
      *
-     * @param  \Illuminate\Http\Request  $request
-     * @return \Illuminate\Http\Response
+     * @param \Illuminate\Http\Request $request
+     * @return ProjectResource
      */
     public function store(Request $request)
     {
-        //
+        $project = Project::create($request->only([
+            'title', 'description', 'image_preview'
+        ]));
+        return new ProjectResource($project);
     }
 
     /**
      * Display the specified resource.
      *
-     * @param  \App\Models\Project  $project
-     * @return \Illuminate\Http\Response
+     * @param \App\Models\Project $project
+     * @return ProjectResource
      */
     public function show(Project $project)
     {
+        return new ProjectResource($project);
         //
     }
 
     /**
      * Update the specified resource in storage.
      *
-     * @param  \Illuminate\Http\Request  $request
-     * @param  \App\Models\Project  $project
-     * @return \Illuminate\Http\Response
+     * @param \Illuminate\Http\Request $request
+     * @param \App\Models\Project $project
+     * @return Response
      */
     public function update(Request $request, Project $project)
     {
@@ -56,8 +61,8 @@ class ProjectController extends Controller
     /**
      * Remove the specified resource from storage.
      *
-     * @param  \App\Models\Project  $project
-     * @return \Illuminate\Http\Response
+     * @param \App\Models\Project $project
+     * @return Response
      */
     public function destroy(Project $project)
     {
