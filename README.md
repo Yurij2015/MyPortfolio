@@ -34,6 +34,6 @@ commands
 - php artisan make:resource ProjectImageCollection
 
 
-
+- php artisan db:seed --class=ProjectImageSeeder
 
 

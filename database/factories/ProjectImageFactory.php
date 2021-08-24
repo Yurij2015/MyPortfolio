@@ -22,7 +22,8 @@ class ProjectImageFactory extends Factory
     public function definition()
     {
         return [
-            //
+            'project_id' => $this->faker->numberBetween(1, 50),
+            'image' => $this->faker->imageUrl(),
         ];
     }
 }

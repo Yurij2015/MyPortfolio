@@ -2,6 +2,7 @@
 
 namespace Database\Seeders;
 
+use App\Models\ProjectImage;
 use Illuminate\Database\Seeder;
 
 class ProjectImageSeeder extends Seeder
@@ -13,6 +14,6 @@ class ProjectImageSeeder extends Seeder
      */
     public function run()
     {
-        //
+        ProjectImage::factory()->times(30)->create();
     }
 }
