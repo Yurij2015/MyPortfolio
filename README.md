@@ -20,4 +20,6 @@ commands
 
 - php artisan db:seed --class=ProjectSeeder
 
+- php artisan route:list
+
 
