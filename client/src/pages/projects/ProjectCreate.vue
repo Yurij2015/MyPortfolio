@@ -2,7 +2,7 @@
   <div class="pt-3 pb-2 mb-3 border-bottom">
     <router-link to="/projects" class="btn btn-sm btn-outline-primary">До списку проектів</router-link>
   </div>
-  <form>
+  <form @submit.prevent="submit">
     <h2 class="h3 mb-3 fw-normal">Додати проект</h2>
     <div class="mb-3">
       <label for="title">Назва проекту</label>
@@ -26,17 +26,26 @@
 
 <script>
 import {reactive} from "vue";
+import axios from "axios";
+import {useRouter} from "vue-router";
 
 export default {
   name: "ProjectCreate",
   setup() {
+    const router = useRouter();
     const data = reactive({
       title: '',
       description: '',
       image_preview: ''
     });
+
+    const submit = async () => {
+      await axios.post('projects', data)
+    }
+
     return {
-      data
+      data,
+      submit
     }
   }
 }
