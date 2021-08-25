@@ -19,7 +19,7 @@
         <td>{{ project.id }}</td>
         <td>{{ project.title }}</td>
         <td>{{ project.description }}</td>
-        <td><img :src="project.image_preview" width="200"/></td>
+        <td><img :src="project.image_preview" width="200" alt=""/></td>
         <td>
           <div class="btn-group mr-2">
             <a href="" class="btn btn-sm btn-outline-info">Переглянути</a>
@@ -37,7 +37,7 @@
 <script lang="ts">
 import {onMounted, ref} from "vue"
 import axios from 'axios'
-import {Project} from "@/models/project";
+import {Project} from "@/models/project"
 
 export default {
   name: "Projects",
@@ -50,7 +50,7 @@ export default {
 
     const del = async (id: number) => {
         if(confirm('Ви впевнені, що потрібно видалити запис?')){
-          await axios.delete(`projects/${id}`);
+          await axios.delete(`projects/${id}`)
           projects.value = projects.value.filter((p: Project) => p.id !== id)
         }
     }
