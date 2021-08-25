@@ -4,7 +4,7 @@
 - npm update -g @vue/cli
 - vue create .
 - npm run serve
-- 
+- npm i axios @types/axios
 
 
 ---

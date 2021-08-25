@@ -12,6 +12,16 @@
             Проекти
           </router-link>
         </li>
+        <li class="nav-item">
+          <router-link class="nav-link" active-class="active" to="/projects">
+            Технології
+          </router-link>
+        </li>
+        <li class="nav-item">
+          <router-link class="nav-link" active-class="active" to="/projects">
+            Контакти
+          </router-link>
+        </li>
       </ul>
     </div>
   </nav>
