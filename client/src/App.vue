@@ -2,21 +2,8 @@
   <Nav/>
   <div class="container-fluid">
     <div class="row">
-      <nav id="sidebarMenu" class="col-md-3 col-lg-2 d-md-block bg-light sidebar collapse">
-        <div class="position-sticky pt-3">
-          <ul class="nav flex-column">
-            <li class="nav-item">
-              <a class="nav-link active">
-                Dashboard
-              </a>
-            </li>
-          </ul>
-
-        </div>
-      </nav>
-
+      <Menu/>
       <main class="col-md-9 ms-sm-auto col-lg-10 px-md-4">
-
         <h2>Section title</h2>
         <div class="table-responsive">
           <table class="table table-striped table-sm">
@@ -47,9 +34,10 @@
 
 <script>
 import Nav from "@/components/Nav";
+import Menu from "@/components/Menu";
 
 export default {
-  components: {Nav}
+  components: {Menu, Nav}
 }
 </script>
 
