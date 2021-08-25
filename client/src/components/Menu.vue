@@ -3,9 +3,14 @@
     <div class="position-sticky pt-3">
       <ul class="nav flex-column">
         <li class="nav-item">
-          <a class="nav-link active">
-            Dashboard
-          </a>
+          <router-link class="nav-link" active-class="active" to="/">
+            Головна
+          </router-link>
+        </li>
+        <li class="nav-item">
+          <router-link class="nav-link" active-class="active" to="/projects">
+            Проекти
+          </router-link>
         </li>
       </ul>
     </div>
