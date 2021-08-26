@@ -16,11 +16,11 @@
     <div class="mb-3">
       <label for="image_preview">Зображення</label>
       <div class="input-group">
-        <input name="image_preview" class="form-control" id="image_preview" placeholder="Посилання на зображення"
-               v-model="data.image_preview">
+        <input v-model="data.image_preview" id="image_preview" class="form-control" name="image_preview">
+        <ImageUpload @uploaded="data.image_preview = $event"/>
       </div>
     </div>
-    <button class="w-100 btn btn-lg btn-primary">Зберегти</button>
+    <button class="w-100 btn btn btn-primary">Зберегти</button>
   </form>
 </template>
 
@@ -28,9 +28,11 @@
 import {reactive} from "vue";
 import axios from "axios";
 import {useRouter} from "vue-router";
+import ImageUpload from "@/components/ImageUpload";
 
 export default {
   name: "ProjectCreate",
+  components: {ImageUpload},
   setup() {
     const router = useRouter();
     const data = reactive({

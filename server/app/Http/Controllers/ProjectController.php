@@ -78,19 +78,20 @@ class ProjectController extends Controller
     public function fileStore(Request $request)
     {
         $validator = Validator:: make($request->all(), [
-            'file' => 'required|mimes:jpg,png,jpeg|max:5000',
+            'image_preview' => 'required|mimes:jpg,png,jpeg|max:5000',
         ]);
         if ($validator->fails()) {
             return response()->json(['error' => $validator->errors()], 401);
         }
-        if ($files = $request->file('file')) {
+        if ($files = $request->file('image_preview')) {
             $upload_path = public_path('/images');
-            $file_name = $request->file->getClientOriginalName();
-            $request->file->move($upload_path, $file_name);
+            $file_name = $request->image_preview->getClientOriginalName();
+            $request->image_preview->move($upload_path, $file_name);
             return response()->json([
                 "success" => true,
                 "message" => "Файл успішно завантажено",
-                "file" => $file_name
+                "file" => $file_name,
+                "url" => "http://localhost:8000/images/" . $file_name,
             ]);
         }
         return response()->json(["message" => "Помилка"]);
