@@ -40,7 +40,8 @@ export default {
     });
 
     const submit = async () => {
-      await axios.post('projects', data)
+      await axios.post('projects', data);
+      await router.push('/projects');
     }
 
     return {
