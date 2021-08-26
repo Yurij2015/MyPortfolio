@@ -23,8 +23,8 @@
         <td>
           <div class="btn-group mr-2">
             <a href="" class="btn btn-sm btn-outline-info">Переглянути</a>
-<!--            <a href="" class="btn btn-sm btn-outline-warning disabled" hidden>Редагувати</a>-->
-            <a href="" class="btn btn-sm btn-outline-warning">Редагувати</a>
+            <!--            <a href="" class="btn btn-sm btn-outline-warning disabled" hidden>Редагувати</a>-->
+            <router-link :to="`/project-edit/${project.id}`" class="btn btn-sm btn-outline-warning">Редагувати</router-link>
             <a href="javascript:void(0)" class="btn btn-sm btn-outline-danger" @click="del(project.id)">Видалити</a>
           </div>
         </td>
@@ -49,10 +49,10 @@ export default {
     });
 
     const del = async (id: number) => {
-        if(confirm('Ви впевнені, що потрібно видалити запис?')){
-          await axios.delete(`projects/${id}`)
-          projects.value = projects.value.filter((p: Project) => p.id !== id)
-        }
+      if (confirm('Ви впевнені, що потрібно видалити запис?')) {
+        await axios.delete(`projects/${id}`)
+        projects.value = projects.value.filter((p: Project) => p.id !== id)
+      }
     }
 
     return {
