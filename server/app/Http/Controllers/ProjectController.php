@@ -5,6 +5,7 @@ namespace App\Http\Controllers;
 use App\Http\Resources\ProjectCollection;
 use App\Http\Resources\ProjectResource;
 use App\Models\Project;
+use Illuminate\Support\Facades\Validator;
 use Illuminate\Http\Request;
 use Illuminate\Http\Response;
 
@@ -72,5 +73,26 @@ class ProjectController extends Controller
     {
         $project->delete();
         return response()->json(null, Response::HTTP_NO_CONTENT);
+    }
+
+    public function fileStore(Request $request)
+    {
+        $validator = Validator:: make($request->all(), [
+            'file' => 'required|mimes:jpg,png,jpeg|max:5000',
+        ]);
+        if ($validator->fails()) {
+            return response()->json(['error' => $validator->errors()], 401);
+        }
+        if ($files = $request->file('file')) {
+            $upload_path = public_path('/images');
+            $file_name = $request->file->getClientOriginalName();
+            $request->file->move($upload_path, $file_name);
+            return response()->json([
+                "success" => true,
+                "message" => "Файл успішно завантажено",
+                "file" => $file_name
+            ]);
+        }
+        return response()->json(["message" => "Помилка"]);
     }
 }
