@@ -37,7 +37,7 @@
 </template>
 
 <script>
-import {reactive, onMounted, ref} from "vue";
+import {reactive, onMounted, ref, watch} from "vue";
 import axios from "axios";
 import {useRouter, useRoute} from "vue-router";
 import ImageUpload from "@/components/ImageUpload";
@@ -72,7 +72,8 @@ export default {
     const submit = async () => {
       await axios.patch(`projects/${route.params.id}`, data);
       await router.push('/projects');
-    }
+    };
+
     return {
       data,
       submit,
