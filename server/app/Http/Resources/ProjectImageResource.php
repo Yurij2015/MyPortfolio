@@ -14,7 +14,6 @@ class ProjectImageResource extends JsonResource
      */
     public function toArray($request)
     {
-//        return parent::toArray($request);
         return [
             'project_id' => $this->project_id,
             'image' => $this->image,
