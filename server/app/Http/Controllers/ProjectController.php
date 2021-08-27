@@ -5,6 +5,7 @@ namespace App\Http\Controllers;
 use App\Http\Resources\ProjectCollection;
 use App\Http\Resources\ProjectResource;
 use App\Models\Project;
+use Illuminate\Http\JsonResponse;
 use Illuminate\Support\Facades\Validator;
 use Illuminate\Http\Request;
 use Illuminate\Http\Response;
@@ -14,7 +15,7 @@ class ProjectController extends Controller
     /**
      * Display a listing of the resource.
      *
-     * @return \Illuminate\Http\JsonResponse
+     * @return JsonResponse
      */
     public function index()
     {
@@ -24,7 +25,7 @@ class ProjectController extends Controller
     /**
      * Store a newly created resource in storage.
      *
-     * @param \Illuminate\Http\Request $request
+     * @param Request $request
      * @return ProjectResource
      */
     public function store(Request $request)
@@ -38,19 +39,19 @@ class ProjectController extends Controller
     /**
      * Display the specified resource.
      *
-     * @param \App\Models\Project $project
+     * @param Project $project
      * @return ProjectResource
      */
     public function show(Project $project)
     {
-        return new ProjectResource($project);
+        return new ProjectResource($project->load('projectImages'));
     }
 
     /**
      * Update the specified resource in storage.
      *
-     * @param \Illuminate\Http\Request $request
-     * @param \App\Models\Project $project
+     * @param Request $request
+     * @param Project $project
      * @return ProjectResource
      */
     public function update(Request $request, Project $project)
@@ -64,8 +65,8 @@ class ProjectController extends Controller
     /**
      * Remove the specified resource from storage.
      *
-     * @param \App\Models\Project $project
-     * @return \Illuminate\Http\JsonResponse
+     * @param Project $project
+     * @return JsonResponse
      */
     public function destroy(Project $project)
     {

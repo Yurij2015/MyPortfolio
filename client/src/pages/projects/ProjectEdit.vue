@@ -3,7 +3,7 @@
     <router-link to="/projects" class="btn btn-sm btn-outline-primary">До списку проектів</router-link>
   </div>
   <form @submit.prevent="submit">
-    <h2 class="h3 mb-3 fw-normal">Додати проект</h2>
+    <h2 class="h3 mb-3 fw-normal">Редагувати проект</h2>
     <div class="mb-3">
       <label for="title">Назва проекту</label>
       <input name="title" id="title" type="text" class="form-control" placeholder="Назва проекту" v-model="data.title">

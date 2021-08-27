@@ -19,29 +19,9 @@
     </div>
     <h4>Галерея проекту</h4>
     <div class="row row-cols-1 row-cols-md-2 g-4">
-      <div class="col">
+      <div class="col" v-for="image in data.project_images" :key="image.id">
         <div class="card">
-          <img :src=data.image_preview class="card-img-top" alt="...">
-        </div>
-      </div>
-      <div class="col">
-        <div class="card">
-          <img :src=data.image_preview class="card-img-top" alt="...">
-        </div>
-      </div>
-      <div class="col">
-        <div class="card">
-          <img :src=data.image_preview class="card-img-top" alt="...">
-        </div>
-      </div>
-      <div class="col">
-        <div class="card">
-          <img :src=data.image_preview class="card-img-top" alt="...">
-        </div>
-      </div>
-      <div class="col">
-        <div class="card">
-          <img :src=data.image_preview class="card-img-top" alt="...">
+          <img :src=image.image class="card-img-top" alt="...">
         </div>
       </div>
     </div>
@@ -60,16 +40,17 @@ export default {
     const data = reactive({
       title: '',
       description: '',
-      image_preview: ''
+      image_preview: '',
+      project_images: ''
     });
 
     onMounted(async () => {
       const response = await axios.get(`projects/${route.params.id}`);
-      console.log(response.data.data);
       data.title = response.data.data.title;
       data.description = response.data.data.description;
       data.image_preview = response.data.data.image_preview;
-
+      data.project_images = response.data.data.project_images
+      console.log(response.data.data.project_images)
     });
 
     return {
