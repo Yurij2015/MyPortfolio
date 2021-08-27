@@ -3,7 +3,7 @@
     <router-link to="/projects" class="btn btn-sm btn-outline-primary">До списку проектів</router-link>
   </div>
   <form @submit.prevent="submit">
-    <h2 class="h3 mb-3 fw-normal">Редагувати проект</h2>
+    <h2 class="h3 mb-3 fw-normal">Редагувати проект - {{ data.title }}</h2>
     <div class="mb-3">
       <label for="title">Назва проекту</label>
       <input name="title" id="title" type="text" class="form-control" placeholder="Назва проекту" v-model="data.title">
@@ -24,6 +24,7 @@
   </form>
   <hr>
   <h5>Додати зображення в галерею проекту</h5>
+<!--    <AddToGallery :project_id="projectId"/>-->
   <AddToGallery/>
   <h4>Галерея проекту</h4>
   <div class="row row-cols-1 row-cols-md-2 g-4">
@@ -36,7 +37,7 @@
 </template>
 
 <script>
-import {reactive, onMounted} from "vue";
+import {reactive, onMounted, ref} from "vue";
 import axios from "axios";
 import {useRouter, useRoute} from "vue-router";
 import ImageUpload from "@/components/ImageUpload";
@@ -45,35 +46,38 @@ import AddToGallery from "@/components/AddToGallery";
 export default {
   name: "ProjectEdit",
   components: {AddToGallery, ImageUpload},
+
   setup() {
     const router = useRouter();
     const route = useRoute();
+    const projectId = ref();
+
     const data = reactive({
+      id: '',
       title: '',
       description: '',
       image_preview: '',
       project_images: ''
     });
-
+    // console.log(projectId);
     onMounted(async () => {
       const response = await axios.get(`projects/${route.params.id}`);
-      console.log(response.data.data);
+      data.id = response.data.data.id;
       data.title = response.data.data.title;
       data.description = response.data.data.description;
       data.image_preview = response.data.data.image_preview;
       data.project_images = response.data.data.project_images
-
+      projectId.value = response.data.data.id
     });
-
     const submit = async () => {
       await axios.patch(`projects/${route.params.id}`, data);
       await router.push('/projects');
     }
-
     return {
       data,
-      submit
+      submit,
+      // projectId
     }
-  }
+  },
 }
 </script>
