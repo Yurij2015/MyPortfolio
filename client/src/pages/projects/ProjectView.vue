@@ -50,7 +50,6 @@ export default {
       data.description = response.data.data.description;
       data.image_preview = response.data.data.image_preview;
       data.project_images = response.data.data.project_images
-      console.log(response.data.data.project_images)
     });
 
     return {

@@ -8,6 +8,7 @@ use App\Models\ProjectImage;
 use Illuminate\Http\JsonResponse;
 use Illuminate\Http\Request;
 use Illuminate\Http\Response;
+use Illuminate\Support\Facades\Validator;
 
 class ProjectImageController extends Controller
 {
@@ -25,14 +26,33 @@ class ProjectImageController extends Controller
      * Store a newly created resource in storage.
      *
      * @param Request $request
-     * @return ProjectImageResource
+     * @return JsonResponse
      */
     public function store(Request $request)
     {
-        $projectImage = ProjectImage::create($request->only([
-            'title', 'description', 'image_preview'
-        ]));
-        return new ProjectImageResource($projectImage);
+        $validator = Validator:: make($request->all(), [
+            'project_id' => 'required',
+            'image' => 'required|mimes:jpg,png,jpeg|max:5000',
+        ]);
+        if ($validator->fails()) {
+            return response()->json(['error' => $validator->errors()], 401);
+        }
+        if ($request->file('image')) {
+            $upload_path = public_path('/images');
+            $file_name = $request->image->getClientOriginalName();
+            $request->image->move($upload_path, $file_name);
+             $imagesave = new ProjectImage();
+             $url = "http://localhost:8000/images/" . $file_name;
+             $imagesave->image = $url;
+             $imagesave->project_id = $request->project_id;
+             $imagesave->save();
+            return response()->json([
+                "success" => true,
+                "message" => "Файл успішно завантажено",
+                "url" => $url,
+            ]);
+        }
+        return response()->json(["message" => "Помилка завантаження файлу"]);
     }
 
     /**
@@ -51,14 +71,10 @@ class ProjectImageController extends Controller
      *
      * @param Request $request
      * @param ProjectImage $projectImage
-     * @return ProjectImageResource
      */
     public function update(Request $request, ProjectImage $projectImage)
     {
-        $projectImage = ProjectImage::update($request->only([
-            'title', 'description', 'image_preview'
-        ]));
-        return new ProjectImageResource($projectImage);
+        //
     }
 
     /**

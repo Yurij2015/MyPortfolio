@@ -24,8 +24,9 @@ Route::apiResource('/projects', ProjectController::class);
 
 Route::apiResource('/project-images', ProjectImageController::class);
 
-//Route::prefix('v1')->group(function(){
-    Route::post('/file-store', 'App\Http\Controllers\ProjectController@fileStore');
-//});
+Route::post('/file-store', 'App\Http\Controllers\ProjectController@fileStore');
+
+Route::post('/gallery-image', 'App\Http\Controllers\ProjectImageController@store');
+
 
 

@@ -22,6 +22,17 @@
     </div>
     <button class="w-100 btn btn btn-primary">Зберегти</button>
   </form>
+  <hr>
+  <h5>Додати зображення в галерею проекту</h5>
+  <AddToGallery/>
+  <h4>Галерея проекту</h4>
+  <div class="row row-cols-1 row-cols-md-2 g-4">
+    <div class="col" v-for="image in data.project_images" :key="image.id">
+      <div class="card">
+        <img :src=image.image class="card-img-top" alt="...">
+      </div>
+    </div>
+  </div>
 </template>
 
 <script>
@@ -29,17 +40,19 @@ import {reactive, onMounted} from "vue";
 import axios from "axios";
 import {useRouter, useRoute} from "vue-router";
 import ImageUpload from "@/components/ImageUpload";
+import AddToGallery from "@/components/AddToGallery";
 
 export default {
   name: "ProjectEdit",
-  components: {ImageUpload},
+  components: {AddToGallery, ImageUpload},
   setup() {
     const router = useRouter();
     const route = useRoute();
     const data = reactive({
       title: '',
       description: '',
-      image_preview: ''
+      image_preview: '',
+      project_images: ''
     });
 
     onMounted(async () => {
@@ -48,6 +61,7 @@ export default {
       data.title = response.data.data.title;
       data.description = response.data.data.description;
       data.image_preview = response.data.data.image_preview;
+      data.project_images = response.data.data.project_images
 
     });
 
