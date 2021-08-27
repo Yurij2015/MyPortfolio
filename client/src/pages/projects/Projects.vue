@@ -22,9 +22,11 @@
         <td><img :src="project.image_preview" width="200" alt=""/></td>
         <td>
           <div class="btn-group mr-2">
-            <a href="" class="btn btn-sm btn-outline-info">Переглянути</a>
+            <router-link :to="`/project-view/${project.id}`" class="btn btn-sm btn-outline-info">Переглянути
+            </router-link>
             <!--            <a href="" class="btn btn-sm btn-outline-warning disabled" hidden>Редагувати</a>-->
-            <router-link :to="`/project-edit/${project.id}`" class="btn btn-sm btn-outline-warning">Редагувати</router-link>
+            <router-link :to="`/project-edit/${project.id}`" class="btn btn-sm btn-outline-warning">Редагувати
+            </router-link>
             <a href="javascript:void(0)" class="btn btn-sm btn-outline-danger" @click="del(project.id)">Видалити</a>
           </div>
         </td>

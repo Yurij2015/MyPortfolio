@@ -3,6 +3,7 @@ import Dashboard from '@/pages/Dashboard.vue'
 import Projects from '@/pages/projects/Projects.vue'
 import ProjectCreate from '@/pages/projects/ProjectCreate.vue'
 import ProjectEdit from '@/pages/projects/ProjectEdit.vue'
+import ProjectView from '@/pages/projects/ProjectView.vue'
 
 
 const routes: Array<RouteRecordRaw> = [
@@ -10,6 +11,7 @@ const routes: Array<RouteRecordRaw> = [
     {path: '/projects', component: Projects},
     {path: '/project-create', component: ProjectCreate},
     {path: '/project-edit/:id', component: ProjectEdit},
+    {path: '/project-view/:id', component: ProjectView},
 
 ]
 

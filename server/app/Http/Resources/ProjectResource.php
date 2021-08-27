@@ -2,6 +2,7 @@
 
 namespace App\Http\Resources;
 
+use Illuminate\Database\Eloquent\Relations\HasMany;
 use Illuminate\Http\Resources\Json\JsonResource;
 
 class ProjectResource extends JsonResource
@@ -18,7 +19,8 @@ class ProjectResource extends JsonResource
             'id' => $this->id,
             'title' => $this->title,
             'description' => $this->description,
-            'image_preview' => $this->image_preview
+            'image_preview' => $this->image_preview,
+            'project_images' => ProjectImageResource::collection($this->whenLoaded('projectImages'))
         ];
 
     }

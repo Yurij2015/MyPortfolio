@@ -19,8 +19,9 @@ class ProjectController extends Controller
     public function index()
     {
 //        return ProjectResource::collection(Project::all());
-        return response()->json(new ProjectCollection(Project::all()), Response::HTTP_OK);
+//        return response()->json(Project::with('projectImages')->get(), Response::HTTP_OK);
 
+        return response()->json(new ProjectCollection(Project::with('projectImages')->get()), Response::HTTP_OK);
     }
 
     /**
