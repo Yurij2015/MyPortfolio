@@ -13,23 +13,23 @@
           </router-link>
         </li>
         <li class="nav-item">
-          <router-link class="nav-link" active-class="active" to="/projects">
+          <router-link class="nav-link" active-class="active" to="/technologies">
             Технології
           </router-link>
         </li>
         <li class="nav-item">
-          <router-link class="nav-link" active-class="active" to="/projects">
+          <router-link class="nav-link" active-class="active" to="/contacts">
             Контакти
           </router-link>
         </li>
       </ul>
-      <div class="alert alert-warning m-1" role="alert">
+      <div class="alert alert-warning m-1 small" role="alert">
         <p>Даний сайт виконано у вигляді клієнт-серверного додатку.</p>
         <p>Для розробки API використані можливості Laravel.</p>
         <p>В якості СУБД використана MySQL.</p>
         <p>Серверна частина розміщена на хостингу hostinger.com.ua</p>
         <p>Клієнтська частина виконана з допомогою Vue 3, Bootstrap 5.</p>
-        <p>Клієнтська частина розміщена з використанням GitHub Pages</p>
+        <p>Клієнтська частина розміщена на GitHub Pages</p>
         <p>Середовище розробки - PHPStorm.</p>
       </div>
     </div>

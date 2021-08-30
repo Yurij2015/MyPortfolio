@@ -10,7 +10,7 @@
   </div>
   <footer class="py-2">
     <div class="border-top">
-      <p class="my-2">  &copy; {{ currentYear }} </p>
+      <p class="my-2 mx-2">  &copy; {{ currentYear }} </p>
     </div>
   </footer>
 </template>

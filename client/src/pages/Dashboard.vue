@@ -1,5 +1,5 @@
 <template>
-  <div class="marketing">
+  <div class="dashboard">
     <hr class="featurette-divider">
     <div class="row featurette">
       <div class="col-md-9 order-md-2">
@@ -23,8 +23,8 @@
              class="bd-placeholder-img rounded-circle" width="140" alt="">
       </div>
     </div>
-    <div class="marketing">
-      <p class="lead">Професійні навички:</p>
+    <div class="dashboard">
+      <p class="lead">Професійні навички</p>
       <div class="list-group">
         <button type="button" class="list-group-item list-group-item-action">Вільне володіння ПК</button>
         <button type="button" class="list-group-item list-group-item-action">10-пальцевий сліпий набір (англ., укр.,
@@ -98,47 +98,31 @@ export default {
 </script>
 
 <style scoped>
-
-/* MARKETING CONTENT
--------------------------------------------------- */
-
-/* Center align the text within the three columns below the carousel */
-.marketing .col-md-3 {
+.dashboard .col-md-3 {
   margin-bottom: 1.5rem;
   text-align: center;
 }
 
-.marketing h2 {
+.dashboard h2 {
   font-weight: 400;
 }
 
-/* rtl:begin:ignore */
-.marketing .col-md-3 p {
+.dashboard .col-md-3 p {
   margin-right: .75rem;
   margin-left: .75rem;
 }
 
-/* rtl:end:ignore */
-
-
-/* Featurettes
-------------------------- */
 
 .featurette-divider {
   margin: 5rem 0; /* Space out the Bootstrap <hr> more */
 }
 
-/* Thin out the marketing headings */
 .featurette-heading {
   font-weight: 300;
   line-height: 1;
-  /* rtl:remove */
   letter-spacing: -.05rem;
 }
 
-
-/* RESPONSIVE CSS
--------------------------------------------------- */
 
 @media (min-width: 40em) {
 
@@ -149,7 +133,5 @@ export default {
   .col-md-3 {
     text-align: center;
   }
-
 }
-
 </style>
