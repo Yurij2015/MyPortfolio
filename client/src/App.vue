@@ -1,6 +1,6 @@
 <template>
   <Nav/>
-  <div class="container-fluid">
+  <div class="container-fluid mb-5">
     <div class="row">
       <Menu/>
       <main class="col-md-9 ms-sm-auto col-lg-10 px-md-4">
@@ -8,6 +8,11 @@
       </main>
     </div>
   </div>
+  <footer class="py-2">
+    <div class="border-top">
+      <p class="my-2">  &copy; {{ currentYear }} </p>
+    </div>
+  </footer>
 </template>
 
 <script>
@@ -18,6 +23,11 @@ export default {
   components: {
     Menu,
     Nav
+  },
+  data() {
+    return {
+      currentYear: new Date().getFullYear(), // 2020
+    };
   }
 }
 </script>
@@ -49,6 +59,10 @@ body {
   z-index: 100; /* Behind the navbar */
   padding: 48px 0 0; /* Height of navbar */
   box-shadow: inset -1px 0 0 rgba(0, 0, 0, .1);
+}
+
+footer {
+  text-align: right;
 }
 
 @media (max-width: 767.98px) {

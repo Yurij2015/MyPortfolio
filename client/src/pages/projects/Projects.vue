@@ -7,7 +7,7 @@
     <table class="table table-striped table-sm">
       <thead>
       <tr>
-        <th scope="col">#</th>
+<!--        <th scope="col">#</th>-->
         <th scope="col">Назва проекту</th>
         <th scope="col">Опис проекту</th>
         <th scope="col">Зображення</th>
@@ -16,7 +16,7 @@
       </thead>
       <tbody>
       <tr v-for="project in projects" :key="project.id">
-        <td>{{ project.id }}</td>
+<!--        <td>{{ project.id }}</td>-->
         <td>{{ project.title }}</td>
         <td>{{ project.description }}</td>
         <td><img :src="project.image_preview" width="200" alt=""/></td>
