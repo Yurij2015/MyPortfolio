@@ -1,2 +1,2 @@
 # MyPortfolio
-Portfolio project LaravelVue
+Portfolio project Laravel and Vue
